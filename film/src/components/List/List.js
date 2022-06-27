@@ -1,20 +1,23 @@
-import { useEffect, useId, useState } from "react";
+import { useEffect, useState } from "react";
 import "../List/List.css";
 
-function List({ show }) {
+function List({ show, searchValue, page, setPage }) {
   const [list, setList] = useState([]);
-  const [page, setPage] = useState(1);
+  const [firstRender, setFirstRender] = useState(false)
     // .then((res) => res.json())
     // .then(res => {setList([...list,...res.results])
   useEffect(() => {
-    const inchvorban =
-        fetch(
-            `https://api.themoviedb.org/3/movie/${show}?api_key=31b50f2491e6bf01fc445182378f4273&language=en-US&page=${page}`
-          )
-          
-        inchvorban.then((res) => res.json())
-        .then(res => {setList([...res.results])})
-        
+    let inchvorban 
+    if(firstRender){
+      inchvorban =
+          fetch(
+              `https://api.themoviedb.org/3/movie/${show}?api_key=31b50f2491e6bf01fc445182378f4273&language=en-US&page=${page}`
+            )
+            
+          inchvorban.then((res) => res.json())
+          .then(res => {setList([...res.results])})}
+
+        setFirstRender(true)
   }, [show]);
   useEffect(() => {
     const inchvorban =
@@ -23,16 +26,15 @@ function List({ show }) {
           )
           
         inchvorban.then((res) => res.json())
-        .then(res => {setList([...list,...res.results])})
+        .then(res => {setList(prev => [...prev,...res.results])})
         
   }, [page]);
   console.log(show);
   console.log(page);
-  // console.log(list);
   return (
     <div className="List">
       <div className="popular">
-        {list.map((movie) => {
+        {list && searchValue && list.filter(el => el.title.includes(searchValue)).map((movie) => {
           console.log(movie);
           return (
             <div

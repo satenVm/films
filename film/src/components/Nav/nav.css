@@ -1,5 +1,4 @@
 .Nav{
-    width: 93.25%;
     height: 60px;
     border: 1px solid;
     display: flex;
@@ -16,6 +15,7 @@
     height: 20px;
     margin-top: 20px;
     background:none ;
+    color: white;
     border: 1px solid white;
 }
 h1{
