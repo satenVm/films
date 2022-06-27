@@ -1,0 +1,23 @@
+.Nav{
+    width: 93.25%;
+    height: 60px;
+    border: 1px solid;
+    display: flex;
+    justify-content: space-between;
+    padding: 5px 50px 5px 50px;
+    background-color: #222223;
+}
+.Nav span{
+    font-size: 40px;
+    color: white;
+}
+.Nav input{
+    width: 200px;
+    height: 20px;
+    margin-top: 20px;
+    background:none ;
+    border: 1px solid white;
+}
+h1{
+    margin: 0;
+}
