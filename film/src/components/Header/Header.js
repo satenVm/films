@@ -1,13 +1,13 @@
 import { useCallback, useEffect,useMemo,useState } from "react";
 import '../Header/header.css'
 import List from "../List/List";
-  function Header(){
+  function Header({id}){
   const[movies,setMovies] = useState(null);
   const[data,setData]= useState({});
 
   useEffect(() =>{
     // getMoves(setMovies())
-    fetch("https://api.themoviedb.org/3/movie/76341?api_key=1d9153e543481708fd5de134abadc70f&language=en-US")
+    fetch(`https://api.themoviedb.org/3/movie/${id}?api_key=1d9153e543481708fd5de134abadc70f&language=en-US`)
     .then((res) => res.json())
     .then(res => setData(res))
   },[])
