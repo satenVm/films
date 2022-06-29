@@ -1,16 +1,17 @@
 import { useCallback, useEffect,useMemo,useState } from "react";
 import '../Header/header.css'
-import List from "../List/List";
-  function Header({id}){
+import { useNavigate } from "react-router-dom";
+  const  Header = ({id}) => {
   const[movies,setMovies] = useState(null);
   const[data,setData]= useState({});
-
+  // let navigate = useNavigate()
   useEffect(() =>{
     // getMoves(setMovies())
     fetch(`https://api.themoviedb.org/3/movie/${id}?api_key=1d9153e543481708fd5de134abadc70f&language=en-US`)
     .then((res) => res.json())
     .then(res => setData(res))
-  },[])
+    
+  },[id])
   let hours = Math.floor(data.runtime /60);
   let minutes = data.runtime - (hours * 60);
   let time =hours +'h' + ':' + minutes +'m ';

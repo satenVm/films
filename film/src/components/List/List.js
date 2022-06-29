@@ -1,10 +1,11 @@
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import "../List/List.css";
 
-function List({ show, searchValue }) {
+function List({ show, searchValue, style }) {
   const [list, setList] = useState([]);
   const [page, setPage] = useState(1);
-
+  let navigate = useNavigate()
   useEffect(() => {
     fetch(
       `https://api.themoviedb.org/3/movie/${show}?api_key=31b50f2491e6bf01fc445182378f4273&language=en-US&page=1`
@@ -29,7 +30,7 @@ function List({ show, searchValue }) {
 
   return (
     <div className="List">
-      <div className="popular">
+      <div className="popular" style={ {flexDirection: !style &&  'column'}}>
         {list &&
           list
             .filter((el) => el.title.includes(searchValue))
@@ -40,6 +41,7 @@ function List({ show, searchValue }) {
                   className="movieList"
                   data-hover={movie.overview}
                   key={movie.id}
+                  onClick={() => navigate(`/${movie.id}`)}
                   style={{
                     backgroundImage: `URL(${
                       "https://image.tmdb.org/t/p/original" +
