@@ -26,7 +26,7 @@ function List({ show, searchValue, style }) {
         });
     }
   }, [page]);
-  console.log(list);
+  //console.log(list);
 
   return (
     <div className="List">
@@ -35,23 +35,36 @@ function List({ show, searchValue, style }) {
           list
             .filter((el) => el.title.includes(searchValue))
             .map((movie) => {
-              console.log(movie);
+              //console.log(movie);
               return (
                 <div
                   className="movieList"
-                  data-hover={movie.overview}
+                  data-hover={style? movie.overview : ''}
                   key={movie.id}
                   onClick={() => navigate(`/${movie.id}`)}
+                  
                   style={{
                     backgroundImage: `URL(${
                       "https://image.tmdb.org/t/p/original" +
                       movie.backdrop_path
                     })`,
+                    
                   }}
-                >
-                  <div className="movieInfo">
-                    <span className="title">{movie.title}</span>
-                    <span className="average">{movie.vote_average}</span>
+                >{}
+                  <div className="movieInfo"style={ { 
+                    width : !style &&  '55rem',
+                    height : !style &&  '24.9rem',
+                    top : !style && "0px",
+                    left : !style && "462px",
+                    borderRadius : !style && "none",
+                    alignContent: !style && "flex-start",
+                    boxShadow : !style && "10px 10px 30px rgb(0 0 0 / 15%)",
+                    }}>
+                    <span className="title" style={{fontSize : !style && "30px"}}>{movie.title}</span>
+                    <span className="average" style={{fontSize : !style && "30px",color : !style && "#5db9e5"}}>{movie.vote_average}</span>
+                    {!style ? <span style={{fontSize: "20px",marginTop : "20px",color : "#2E8BC0"}}>
+                      <h2 style={{fontSize: "25px",color : "black"}}>Overview</h2>
+                      {movie.overview}</span>: <></> }
                   </div>
                 </div>
               );

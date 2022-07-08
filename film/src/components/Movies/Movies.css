@@ -4,9 +4,11 @@
     border-bottom: 3px solid #2E8BC0;
     margin: auto;
     margin-top: 30px;
+    display: flex;
+    justify-content: space-between;
 }
 .Movies button{
-    margin-right: 20px;
+    margin-right: 3px;
     font-size: 20px;
     border: none;
     background: none;
@@ -14,4 +16,32 @@
 }
 .Movies button:hover{
     color: black;
+}
+.normal{
+    display: flex;
+    flex-wrap: wrap;
+    width: 45px;
+}
+.normal span{
+    width: 0.7rem;
+    height: 0.7rem;
+    margin: 0 0.06rem 0.18rem;
+    border-radius: 2px;
+    background-color: #2E8BC0;
+}
+.horizontal { 
+    display: flex;
+    flex-wrap: wrap;
+    width: 45px;
+}
+.horizontal span{
+    width: 1.7rem;
+    height: 0.7rem;
+    margin-bottom: 0.17rem;
+    border-radius: 2px;
+    background-color: #2E8BC0;
+}
+.parent{
+    display: flex;
+    justify-content: space-evenly;
 }

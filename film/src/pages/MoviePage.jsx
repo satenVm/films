@@ -4,6 +4,7 @@ import Header from "../components/Header/Header";
 import List from "../components/List/List";
 import Movies from '../components/Movies/Movies';
 import { useParams } from 'react-router-dom'
+import { MovieVideo } from '../components/MovieVideo/MovieVideo';
 
 export const MoviePage = () => {
     let { id } = useParams()
@@ -15,9 +16,11 @@ export const MoviePage = () => {
     const [row,setRow] = useState(true)
   return (
     <>
-        <Nav searchValue={searchValue} setSearchValue={setSearchValue}/>
+      <Nav searchValue={searchValue} setSearchValue={setSearchValue}/>
       <Header id={id} />
-      <Movies changePages={changePages}  changeStyle={setRow}/>
+      <MovieVideo id={id}/>
+      {/* <Movies changePages={changePages}  changeStyle={setRow}/> */}
+      
       <List  searchValue={searchValue} style={row}  show={show}/>
     </>
   )

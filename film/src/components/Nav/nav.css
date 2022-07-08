@@ -5,6 +5,10 @@
     justify-content: space-between;
     padding: 5px 50px 5px 50px;
     background-color: #222223;
+    width: 94%;
+    position: fixed;
+    z-index: 1;
+    opacity: 85%;
 }
 .Nav span{
     font-size: 40px;

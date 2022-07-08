@@ -12,7 +12,7 @@ export const HomePage = () => {
     }
   return (
     <>
-        <Nav searchValue={searchValue} setSearchValue={setSearchValue}/>
+      <Nav searchValue={searchValue} setSearchValue={setSearchValue}/>
       <Header id={453395}/>
       <Movies changePages={changePages}  changeStyle={setRow}/>
       <List  searchValue={searchValue} style={row}  show={show}/>
